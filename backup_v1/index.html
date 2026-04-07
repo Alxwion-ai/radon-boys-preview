@@ -20,30 +20,6 @@
     <div id="radioactive-bg" class="particle-container bg-particles"></div>
     <div id="radioactive-fg" class="particle-container fg-particles"></div>
 
-    <!-- Bio-HUD Overlay -->
-    <div class="bio-hud">
-        <div class="hud-top-left">
-            <div class="hud-status">SYSTEM_READY</div>
-            <div class="hud-location">RADON_SECTOR_07</div>
-        </div>
-        <div class="hud-top-right">
-            <div class="radar-container">
-                <div class="radar-circle"></div>
-                <div class="radar-sweep"></div>
-                <div class="radar-blip"></div>
-            </div>
-        </div>
-        <div class="hud-bottom-left">
-            <div class="rad-gauge">
-                <div class="gauge-label">RADIATION_LEVEL</div>
-                <div class="gauge-bar-wrapper">
-                    <div id="rad-gauge-fill" class="gauge-bar-fill"></div>
-                </div>
-                <div id="rad-numerical" class="gauge-value">0.024 mSv</div>
-            </div>
-        </div>
-    </div>
-
     <!-- Custom Cursor -->
     <div class="custom-cursor" id="cursor"></div>
 
@@ -117,20 +93,17 @@
     <!-- Gallery Section -->
     <section class="gallery scroll-reveal toxic-glow-section">
         <div class="masonry-grid">
-            <div class="masonry-item standout">
+            <div class="masonry-item tilt-right standout">
                 <video class="inline-vid" src="Videos/v1.mp4" autoplay loop muted playsinline></video>
             </div>
-            <div class="masonry-item tilt-right">
-                <img src="Bilder/1721751336968.jpg" alt="Radon Boys Sofa Sessions">
-            </div>
             <div class="masonry-item tilt-left">
-                <img src="Bilder/1721751409598.jpg" alt="Radon Boys Outdoor">
+                <img src="Bilder/1721751409598.jpg" alt="Band Action">
             </div>
             <div class="masonry-item tilt-right">
-                <img src="Bilder/IMG-20250126-WA0007.jpg" alt="Radon Boys Action">
+                <video class="inline-vid" src="Videos/v2.mp4" autoplay loop muted playsinline></video>
             </div>
             <div class="masonry-item tilt-left">
-                <img src="Bilder/20250126_021255.jpg" alt="Radon Boys Portrait">
+                <img src="Bilder/1721751336968.jpg" alt="Live Show 2">
             </div>
         </div>
         <div class="gallery-cta">
@@ -244,7 +217,6 @@
 
     <!-- Video Modal -->
     <div id="video-modal" class="video-modal">
-        <div class="breach-alert">CONTAINMENT_BREACH_DETECTED</div>
         <span class="modal-close">&times;</span>
         <div class="modal-content">
             <video id="modal-video" controls></video>

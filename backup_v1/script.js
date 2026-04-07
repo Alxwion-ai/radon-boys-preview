@@ -108,7 +108,6 @@ clickableVideos.forEach(vid => {
     vid.addEventListener('click', () => {
         modalVideo.src = vid.src;
         videoModal.classList.add('active');
-        videoModal.classList.add('breach'); // Add the new "breach" effect
         modalVideo.volume = 1; // Play with sound
         modalVideo.play();
     });
@@ -116,7 +115,6 @@ clickableVideos.forEach(vid => {
 
 const closeModal = () => {
     videoModal.classList.remove('active');
-    videoModal.classList.remove('breach');
     modalVideo.pause();
     modalVideo.removeAttribute('src');
     modalVideo.load();
@@ -181,8 +179,7 @@ class ParticleSystem {
             if (p.y < -p.size) p.y = window.innerHeight;
             if (p.y > window.innerHeight) p.y = -p.size;
 
-            // Use translate3d for hardware acceleration and smooth sub-pixel rendering
-            p.el.style.transform = `translate3d(${p.x.toFixed(2)}px, ${p.y.toFixed(2)}px, 0)`;
+            p.el.style.transform = `translate3d(${p.x}px, ${p.y}px, 0)`;
         });
         requestAnimationFrame(() => this.update());
     }
@@ -201,49 +198,17 @@ let audioCtx = null;
 let lastScrollY = window.scrollY;
 let scrollVelocity = 0;
 let geigerTimeout = null;
-let droneOsc = null;
-let droneGain = null;
-let audioEnabled = true;
 
 const initAudio = () => {
     if (audioCtx) return;
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    
-    // Background Drone
-    droneOsc = audioCtx.createOscillator();
-    droneOsc.type = 'sawtooth';
-    droneOsc.frequency.setValueAtTime(40, audioCtx.currentTime); // Low bass
-    
-    droneGain = audioCtx.createGain();
-    droneGain.gain.setValueAtTime(0, audioCtx.currentTime); // Start silent
-    
-    const filter = audioCtx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(150, audioCtx.currentTime);
-    
-    droneOsc.connect(filter);
-    filter.connect(droneGain);
-    droneGain.connect(audioCtx.destination);
-    
-    droneOsc.start();
-};
-
-const updateAudioDynamics = (scrollPercent) => {
-    if (!audioCtx || !audioEnabled) return;
-    
-    // Smoothly update drone frequency and gain based on scroll/RAD level
-    const freq = 40 + (scrollPercent * 0.5);
-    const gain = 0.02 + (scrollPercent * 0.0005);
-    
-    droneOsc.frequency.setTargetAtTime(freq, audioCtx.currentTime, 0.1);
-    droneGain.gain.setTargetAtTime(gain, audioCtx.currentTime, 0.1);
 };
 
 const playGeigerClick = () => {
-    if (!audioCtx || !audioEnabled) return;
+    if (!audioCtx) return;
     if (audioCtx.state === 'suspended') audioCtx.resume();
 
-    const bufferSize = audioCtx.sampleRate * 0.01;
+    const bufferSize = audioCtx.sampleRate * 0.01; // 10ms
     const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
     const data = buffer.getChannelData(0);
 
@@ -254,7 +219,7 @@ const playGeigerClick = () => {
     const source = audioCtx.createBufferSource();
     source.buffer = buffer;
     const gain = audioCtx.createGain();
-    gain.gain.value = Math.min(Math.abs(scrollVelocity) * 0.05, 0.2);
+    gain.gain.value = Math.min(Math.abs(scrollVelocity) * 0.05, 0.3);
     
     source.connect(gain);
     gain.connect(audioCtx.destination);
@@ -267,13 +232,11 @@ const handleScrollEffects = () => {
     scrollVelocity = currentScrollY - lastScrollY;
     lastScrollY = currentScrollY;
 
-    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-    updateAudioDynamics(scrollPercent);
-
     // Geiger Clicks based on velocity
     if (Math.abs(scrollVelocity) > 5) {
         if (!geigerTimeout) {
             playGeigerClick();
+            // Faster ticks the faster we scroll
             const delay = Math.max(20, 200 - Math.abs(scrollVelocity) * 2);
             geigerTimeout = setTimeout(() => {
                 geigerTimeout = null;
@@ -281,125 +244,25 @@ const handleScrollEffects = () => {
         }
     }
 
-    // Scroll Warp (Skew)
+    // Scroll Warp (Skew) for elements with .scroll-warp
     const warpElements = document.querySelectorAll('.scroll-reveal, .masonry-item, .hero-content');
     const skew = Math.min(Math.max(scrollVelocity * 0.05, -10), 10);
     warpElements.forEach(el => {
+        // We only apply additional skew if they are not already transform animated
         if (el.classList.contains('visible') || el.classList.contains('hero-content')) {
              el.style.transform = `skewY(${skew}deg)`;
         }
     });
 
+    // Reset warp smoothly
     clearTimeout(window.warpResetTimer);
     window.warpResetTimer = setTimeout(() => {
-        warpElements.forEach(el => el.style.transform = `skewY(0deg)`);
+        warpElements.forEach(el => {
+            el.style.transform = `skewY(0deg)`;
+        });
     }, 150);
-
-    // Update HUD Gauge
-    const gaugeFill = document.getElementById('rad-gauge-fill');
-    const radValue = document.getElementById('rad-numerical');
-    if (gaugeFill) gaugeFill.style.width = Math.min(Math.max(scrollPercent, 5), 100) + '%';
-    if (radValue) {
-        const val = (0.024 + (scrollPercent * 0.05)).toFixed(3);
-        radValue.innerText = val + ' mSv';
-        radValue.style.color = scrollPercent > 80 ? 'var(--red)' : 'var(--yellow)';
-    }
 };
 
 window.addEventListener('scroll', handleScrollEffects, { passive: true });
-window.addEventListener('click', initAudio);
-
-/**
- * =========================================
- * V2 EXPERIENCE: SCRAMBLE, TILT & FOG
- * =========================================
- */
-
-// 1. Text Scramble Effect
-class TextScramble {
-  constructor(el) {
-    this.el = el;
-    this.chars = '!<>-_\\/[]{}—=+*^?#________';
-    this.update = this.update.bind(this);
-  }
-  setText(newText) {
-    const oldText = this.el.innerText;
-    const length = Math.max(oldText.length, newText.length);
-    const promise = new Promise((resolve) => (this.resolve = resolve));
-    this.queue = [];
-    for (let i = 0; i < length; i++) {
-      const from = oldText[i] || '';
-      const to = newText[i] || '';
-      const start = Math.floor(Math.random() * 40);
-      const end = start + Math.floor(Math.random() * 40);
-      this.queue.push({ from, to, start, end });
-    }
-    cancelAnimationFrame(this.frameRequest);
-    this.frame = 0;
-    this.update();
-    return promise;
-  }
-  update() {
-    let output = '';
-    let complete = 0;
-    for (let i = 0, n = this.queue.length; i < n; i++) {
-        let { from, to, start, end, char } = this.queue[i];
-        if (this.frame >= end) {
-            complete++;
-            output += to;
-        } else if (this.frame >= start) {
-            if (!char || Math.random() < 0.28) {
-                char = this.randomChar();
-                this.queue[i].char = char;
-            }
-            output += `<span class="d-char">${char}</span>`;
-        } else {
-            output += from;
-        }
-    }
-    this.el.innerHTML = output;
-    if (complete === this.queue.length) {
-        this.resolve();
-    } else {
-        this.frameRequest = requestAnimationFrame(this.update);
-        this.frame++;
-    }
-  }
-  randomChar() { return this.chars[Math.floor(Math.random() * this.chars.length)]; }
-}
-
-const scrambleElements = document.querySelectorAll('.section-title, .about-headline, .contact-title');
-scrambleElements.forEach(el => {
-    const originalText = el.innerText;
-    el.innerText = '';
-    const fx = new TextScramble(el);
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                fx.setText(originalText);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    observer.observe(el);
-});
-
-// 2. Mouse Parallax Tilt
-const tiltElements = document.querySelectorAll('.hero-title, .date-card, .masonry-item, .image-wrapper');
-
-document.addEventListener('mousemove', (e) => {
-    const { clientX, clientY } = e;
-    
-    // Tilt Logic
-    tiltElements.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        const elCenterX = rect.left + rect.width / 2;
-        const elCenterY = rect.top + rect.height / 2;
-        const rotateY = Math.min(Math.max((clientX - elCenterX) / 20, -10), 10);
-        const rotateX = Math.min(Math.max(-(clientY - elCenterY) / 20, -10), 10);
-        el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-});
-
-
+window.addEventListener('click', initAudio); // Start audio on first click too
 
