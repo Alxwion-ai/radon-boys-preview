@@ -82,18 +82,20 @@ revealElements.forEach(el => {
     scrollObserver.observe(el);
 });
 
-// Add a slight delay to start Glitch effect on Hero text
+// Glitch effect on Hero text (Restored)
 setTimeout(() => {
-    document.querySelector('.hero-title').style.textShadow = '2px 0 var(--red), -2px 0 var(--yellow)';
-    
-    // Periodically glitch the headline
-    setInterval(() => {
-        const title = document.querySelector('.hero-title');
-        title.style.transform = `translate(${Math.random()*4 - 2}px, ${Math.random()*4 - 2}px)`;
-        setTimeout(() => {
-             title.style.transform = `translate(0,0)`;
-        }, 50);
-    }, 3000);
+    const title = document.querySelector('.hero-title');
+    if(title) {
+        title.style.textShadow = '2px 0 var(--red), -2px 0 var(--yellow)';
+        
+        // Periodically glitch the headline
+        setInterval(() => {
+            title.style.transform = `translate(${Math.random()*4 - 2}px, ${Math.random()*4 - 2}px)`;
+            setTimeout(() => {
+                title.style.transform = `translate(0,0)`;
+            }, 50);
+        }, 3000);
+    }
 }, 2000);
 
 // Video Modal Logic

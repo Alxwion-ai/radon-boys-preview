@@ -3,8 +3,8 @@
 ========================================= */
 :root {
     --black: #080808;
-    --yellow: #D4FF00;
-    --red: #FF1A1A;
+    --yellow: #e6a845; /* Custom Orange */
+    --red: #d1561f; /* Darker Orange / Rust */
     --white: #F0F0F0;
     --bebas: 'Bebas Neue', sans-serif;
     --space: 'Space Mono', monospace;
@@ -88,9 +88,10 @@ body {
 .custom-cursor.hover {
     border-color: var(--yellow);
     width: 30px; height: 30px;
+    background: transparent;
 }
-.custom-cursor.hover::before { transform: rotate(45deg); width: 2px; height: 14px; background: var(--yellow); }
-.custom-cursor.hover::after { transform: rotate(45deg); width: 14px; height: 2px; background: var(--yellow); }
+.custom-cursor.hover::before { transform: rotate(45deg); width: 2px; height: 14px; background: var(--yellow); opacity: 1;}
+.custom-cursor.hover::after { transform: rotate(45deg); width: 14px; height: 2px; background: var(--yellow); opacity: 1;}
 
 
 /* Typography */
@@ -167,18 +168,17 @@ p { font-size: 0.9rem; }
     position: absolute; top: -10%; left: -10%; width: 120%; height: 120%;
     background-size: cover; background-position: center;
     z-index: 1;
-    filter: grayscale(100%) contrast(1.2);
+    filter: sepia(30%) contrast(1.1);
+    animation: loadGlitch 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 .duotone-overlay {
     position: absolute; top:0; left:0; width: 100%; height: 100%;
-    background: linear-gradient(135deg, rgba(8,8,8,0.8) 0%, rgba(212,255,0,0.2) 100%);
+    background: linear-gradient(135deg, rgba(26,21,18,0.85) 0%, rgba(220,167,67,0.2) 100%);
     mix-blend-mode: multiply;
 }
 
-/* RGB Glitch Animation on Load */
-.hero-bg { animation: loadGlitch 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
 @keyframes loadGlitch {
-    0% { filter: grayscale(100%) contrast(1.2) hue-rotate(90deg); transform: scale(1.05) translate(10px, 5px); }
+    0% { filter: grayscale(100%) contrast(1.2) hue-rotate(20deg); transform: scale(1.05) translate(10px, 5px); }
     10% { filter: grayscale(100%) contrast(1.5) invert(1); transform: scale(1) translate(-10px, -5px); }
     20% { filter: grayscale(100%) contrast(1.2); transform: scale(1.02) translate(5px, -5px); }
     100% { filter: grayscale(100%) contrast(1.2); transform: scale(1) translate(0); }
@@ -276,7 +276,7 @@ p { font-size: 0.9rem; }
 .instagram { padding: 120px 4vw; }
 .center { text-align: center; display: block; margin: 0 auto 60px auto; }
 .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid #222; }
-.ig-grid img, .ig-grid video { width: 100%; height: 100%; aspect-ratio: 1/1; object-fit: cover; filter: grayscale(80%) contrast(1.2); transition: 0.4s; }
+.ig-grid img, .ig-grid video { width: 100%; height: 100%; aspect-ratio: 1/1; object-fit: cover; filter: grayscale(80%) contrast(1.2); transition: 0.4s; cursor: pointer; }
 .ig-grid img:hover, .ig-grid video:hover { filter: grayscale(0%); transform: scale(1.05) translateZ(0); position: relative; z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
 .ig-btn-wrapper { text-align: center; margin-top: 50px; }
 .glitch-btn { font-size: 1.5rem; padding: 15px 40px; font-family: var(--bebas); letter-spacing: 2px; }
@@ -298,8 +298,8 @@ p { font-size: 0.9rem; }
 .footer { padding: 30px 4vw; background: #020202; border-top: 1px solid #111; }
 .footer-top { display: flex; justify-content: space-between; margin-bottom: 20px; }
 .f-brand { font-family: var(--bebas); font-size: 1.5rem; letter-spacing: 2px; text-align: left; }
-.footer-logo { height: 100px; width: auto; margin-bottom: 10px; filter: grayscale(100%); transition: 0.3s; }
-.footer-logo:hover { filter: grayscale(0%) drop-shadow(0 0 10px rgba(212,255,0,0.5)); }
+.footer-logo { height: 100px; width: auto; margin-bottom: 10px; transition: 0.3s; filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
+.footer-logo:hover { filter: drop-shadow(0 0 10px var(--yellow)); }
 .f-links a { margin-left: 30px; font-size: 0.8rem; }
 .f-links a:hover { color: var(--yellow); }
 .footer-bottom { display: flex; justify-content: space-between; font-size: 0.7rem; color: #666; }

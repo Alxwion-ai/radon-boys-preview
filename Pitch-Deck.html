@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitch Deck: The Radon Boys</title>
+    <style>
+        :root {
+            --black: #080808;
+            --white: #ffffff;
+            --red: #FF1A1A;
+            --light-grey: #f4f4f4;
+            --dark-grey: #333333;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: var(--light-grey);
+            color: var(--dark-grey);
+            line-height: 1.6;
+        }
+        /* A4 Paper Simulation */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: var(--white);
+            margin: 20mm auto;
+            padding: 25mm 20mm;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 4px solid var(--black);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--black);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+        }
+        .header p {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--black);
+            border-left: 5px solid var(--red);
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-size: 1.2rem;
+            color: var(--black);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background-color: #FAFAFA;
+            border: 1px solid #EAEAEA;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 1px solid #EAEAEA;
+        }
+        th { background-color: var(--black); color: var(--white); }
+        tr:nth-child(even) { background-color: #F9F9F9; }
+
+        .price-box {
+            background: var(--black);
+            color: var(--white);
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .price-box h3 { color: var(--white); margin-top: 0; border: none; padding: 0; }
+        .price-box ul { list-style: none; margin-top: 15px; }
+        .price-box ul li { margin-bottom: 10px; font-size: 0.95rem; display: flex; align-items: flex-start; }
+        .price-box ul li::before { content: '✔'; color: var(--red); font-weight: bold; margin-right: 15px; }
+        .price-tag { font-size: 1.8rem; font-weight: 800; color: #fff; margin-top: 15px; display: block; }
+        .price-subtitle { font-size: 0.8rem; color: #aaa; margin-top: 5px; display: block; }
+
+        .cta-box {
+            margin-top: 50px;
+            text-align: center;
+            padding: 25px;
+            background: #FAFAFA;
+            border: 2px dashed #CCC;
+            font-weight: bold;
+        }
+        .link { color: var(--red); text-decoration: none; word-break: break-all; }
+
+        /* Print Settings for PDF generation */
+        @media print {
+            body { background: var(--white); }
+            .page { width: 100%; height: auto; margin: 0; padding: 0; box-shadow: none; }
+            .price-box { page-break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="header">
+        <h1>THE RADON BOYS</h1>
+        <p>Pitch-Dokument: Euer digitaler Moshpit & Online-Präsenz</p>
+    </div>
+
+    <h2>1. Die Vision</h2>
+    <p>
+        Eure aktuelle Web-Präsenz fängt nicht ein, was auf der Bühne passiert. Wir haben eine Plattform gebaut, die <strong>laut, roh und kompromisslos</strong> ist. Kein Baukasten-Müll, sondern 100% Custom Design ("Analogpunk meets Digital Noir").
+    </p>
+
+    <h3>Was wir bereits für euch gebaut haben:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Was es auslöst (Der Mehrwert)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Video-Integration</strong></td>
+                <td>Instagram-Loops laufen absolut flüssig direkt im Hintergrund der Website.</td>
+            </tr>
+            <tr>
+                <td><strong>Custom Lightbox</strong></td>
+                <td>Fans klicken, das Bild wird dunkel, der Sound ballert los. Fokus pur.</td>
+            </tr>
+            <tr>
+                <td><strong>Noir-Filter Layer</strong></td>
+                <td>Brachialer roter und schwarzgrauer Look, der nach exklusiver Agentur aussieht.</td>
+            </tr>
+            <tr>
+                <td><strong>Lightning Speed</strong></td>
+                <td>Keine Ladezeiten. Minimalistischer Code. Perfekt SEO-optimiert für Google.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box">
+        <strong>Warum braucht ihr das?</strong><br><br>
+        Eine Premium-Website signalisiert Konzert-Venues und Bookern <strong>Professionalität</strong>. Das ist euer Argument, um <strong>höhere Gagen</strong> zu rechtfertigen. Gleichzeitig verwandelt die perfekte mobile Ansicht eure Instagram-Follower deutlich schneller in Ticket- und Merch-Käufer.
+    </div>
+<br>
+<br>
+    <h2>2. Das Angebot (Care-Free Pakete)</h2>
+    <p>Wir wissen, dass ihr Musiker seid und keine IT-Admins. Daher übernehmen wir die komplette technische Verantwortung.</p>
+
+    <div class="price-box">
+        <h3>Paket 1: "Ownership" (Live-Schaltung)</h3>
+        <ul>
+            <li>Vollständige Design-Übergabe der "Digital Noir" Website.</li>
+            <li>Keine Baukasten-Limits. Es gehört zu 100% euch.</li>
+            <li>Nahtlose Anbindung auf eure Wunsch-Domain (z.B. the-radon-boys.com) über extrem schnelle High-Speed Cloud Server.</li>
+        </ul>
+        <span class="price-tag">1.490,00 €</span>
+        <span class="price-subtitle">(Einmalige Investition, exklusiver Artist-Sonderpreis)</span>
+    </div>
+
+    <div class="price-box" style="background: #ffffff; color: var(--black); border: 2px solid var(--black);">
+        <h3 style="color: var(--black);">Paket 2: "Backstage" (Wartung & Support)</h3>
+        <ul style="color: var(--dark-grey);">
+            <li><strong>Content-Updates auf Zuruf:</strong> Ihr schreibt uns ("Neue Tourdaten!"), wir setzen es online.</li>
+            <li>Kostenloses High-Speed Server Hosting inklusive.</li>
+            <li>SSL-Zertifikate, Sicherheitsupdates & Backups laufen zu 100% automatisiert über uns.</li>
+        </ul>
+        <span class="price-tag" style="color: var(--black);">49,00 €</span>
+        <span class="price-subtitle" style="color: var(--black);">(Monatlich kündbares Retainer-Modell)</span>
+    </div>
+
+    <div class="cta-box">
+        Die Vorschau eurer Website ist jetzt live. Checkt es hier ab:<br><br>
+        <a href="https://Alxwion-ai.github.io/radon-boys-preview" class="link">https://Alxwion-ai.github.io/radon-boys-preview</a>
+        <br><br>
+        Lasst uns die Tage 10 Minuten telefonieren.
+    </div>
+</div>
+
+</body>
+</html>
