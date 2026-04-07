@@ -184,8 +184,8 @@ p { font-size: 0.9rem; }
     100% { filter: grayscale(100%) contrast(1.2); transform: scale(1) translate(0); }
 }
 
-.hero-content { position: relative; z-index: 2; text-align: center; }
-.hero-title { font-size: 10vw; margin-bottom: 20px; display: flex; flex-direction: column; }
+.hero-content { position: relative; z-index: 2; text-align: center; margin-top: -5vh; }
+.hero-title { font-size: 7vw; line-height: 0.85; margin-bottom: 30px; display: flex; flex-direction: column; }
 .hero-title .line { 
     display: block; opacity: 0; transform: translateX(-50px);
     animation: slideIn 0.8s forwards cubic-bezier(0.1, 0.9, 0.2, 1);
