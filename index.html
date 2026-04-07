@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE RADON BOYS | Official Website</title>
+    <meta name="description" content="The Radon Boys. Eine Band. Keine Kompromisse. Der Lärm, den du gesucht hast.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Grain Overlay -->
+    <div class="grain-overlay"></div>
+    <!-- Scanlines Overlay -->
+    <div class="scanlines"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#home" class="nav-brand">
+            <img src="Bilder/Radon_LOGO.jpg" alt="The Radon Boys Logo" class="nav-logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">ÜBER UNS</a></li>
+            <li><a href="#shows">TERMINE</a></li>
+            <li><a href="#contact">KONTAKT</a></li>
+            <li><a href="https://instagram.com/theradonboys" target="_blank" class="ig-link">INSTAGRAM</a></li>
+        </ul>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ÜBER UNS</a></li>
+            <li><a href="#shows">TERMINE</a></li>
+            <li><a href="#contact">KONTAKT</a></li>
+            <li><a href="https://instagram.com/theradonboys" target="_blank">INSTAGRAM</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-bg parallax" style="background-image: url('assets/hero.png');">
+            <div class="duotone-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-subtitle" style="margin-top: 50px;">We don't play music. We detonate it.</p>
+            <div class="hero-ctas">
+                <a href="#shows" class="btn btn-primary">[ DATES & SHOWS ]</a>
+                <a href="https://instagram.com/theradonboys" target="_blank" class="btn btn-outline">[ FOLLOW ON IG ]</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container split-layout">
+            <div class="split-image scroll-reveal">
+                <div class="image-wrapper">
+                    <img src="assets/about.png" alt="The Radon Boys Member">
+                    <div class="image-accent"></div>
+                </div>
+            </div>
+            <div class="split-text">
+                <h2 class="about-headline scroll-reveal">WIR SIND DER LÄRM,<br>DEN DU GESUCHT HAST.</h2>
+                <div class="about-copy">
+                    <p class="scroll-anim-line">The Radon Boys. Eine Band.</p>
+                    <p class="scroll-anim-line delay-1">Keine Kompromisse.</p>
+                    <p class="scroll-anim-line delay-2">Gegründet aus der Überzeugung,</p>
+                    <p class="scroll-anim-line delay-3">dass Musik entweder alles gibt – oder nichts.</p>
+                    <p class="scroll-anim-line delay-4">Live-Sound, der Wände bewegt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery scroll-reveal">
+        <div class="masonry-grid">
+            <div class="masonry-item tilt-right standout">
+                <video class="inline-vid" src="Videos/v1.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="masonry-item tilt-left">
+                <img src="assets/about.png" alt="Band Action">
+            </div>
+            <div class="masonry-item tilt-right">
+                <video class="inline-vid" src="Videos/v2.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="masonry-item tilt-left">
+                <img src="assets/gallery1.png" alt="Live Show 2">
+            </div>
+        </div>
+        <div class="gallery-cta">
+            <a href="https://instagram.com/theradonboys" target="_blank" class="glitch-link">[ MEHR AUF INSTAGRAM → ]</a>
+        </div>
+    </section>
+
+    <!-- Shows / Tour Dates Section -->
+    <section class="shows" id="shows">
+        <div class="shows-container scroll-reveal">
+            <h2 class="section-title" style="border-bottom:none;">ÖFFENTLICHE VERANSTALTUNGEN 2026</h2>
+            <div class="dates-list">
+                <div class="date-card">
+                    <span class="date-txt">> 30.04.2026 — WÜNSCHENDORF — Hexenfeuer</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 09.05.2026 — ZSCHOPAU — Skihang Reloaded</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 14.05.2026 — SCHINDELBACH — Männertag an der Kesselstub</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 16.05.2026 — ANNABERG-BUCHHOLZ — Bergamt (Modenacht)</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 24.05.2026 — WÜNSCHENDORF — Bierfabrik Erzgebirge</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 30.05.2026 — MILDENAU — Lebenswerkstatthof</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 13.06.2026 — FALKENBACH — Gartenfest</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 20.06.2026 — EHRENFRIEDERSDORF — Waldfrieden e. V. Vereinsfest</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 27.06.2026 — ARNSFELD — 100 Jahre Fußball</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 04.07.2026 — OBERWIESENTHAL — Kräuter- u. Aroniafest, Pension Riedel</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 21.08.2026 — ANNABERG-BUCHHOLZ — Kinder- und Straßenfest</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 22.08.2026 — SCHÖNBRUNN — Spritzenfest</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="date-card">
+                    <span class="date-txt">> 23.08.2026 — MARKERSBACH / PÖHLA — Erzgebirgische Liedertour</span>
+                    <a href="#contact" class="ticket-link">[→ KONTAKT]</a>
+                </div>
+                <div class="terminal-cursor">_</div>
+            </div>
+            <p class="more-shows mt-4 text-center" style="margin-top:20px; font-family:var(--space); font-size:1.2rem; display:block; letter-spacing:1px; color:#aaa;">WEITERE TERMINE FOLGEN...</p>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section scroll-reveal">
+        <video class="video-bg" src="Bilder/VID-20250223-WA0003.mp4" autoplay loop muted playsinline poster="assets/gallery1.png"></video>
+        <div class="video-overlay"></div>
+        <h2 class="video-title">LIVE IST ANDERS.</h2>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="instagram">
+        <h2 class="section-title center">THE MOVEMENT. FOLLOW IT.</h2>
+        <div class="ig-grid scroll-reveal">
+            <video src="Videos/v3.mp4" autoplay loop muted playsinline class="ig-vid"></video>
+            <img src="assets/hero.png" alt="IG 2">
+            <video src="Videos/v4.mp4" autoplay loop muted playsinline class="ig-vid"></video>
+            <img src="assets/gallery1.png" alt="IG 4">
+            <video src="Videos/v5.mp4" autoplay loop muted playsinline class="ig-vid"></video>
+            <img src="assets/about.png" alt="IG 6">
+        </div>
+        <div class="ig-btn-wrapper">
+            <a href="https://instagram.com/theradonboys" target="_blank" class="btn btn-primary glitch-btn"><span class="icon">↗</span> @THERADONBOYS</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container scroll-reveal">
+            <div class="contact-content">
+                <h2 class="contact-title">SCHREIB UNS.<br>ODER NICHT.<br>ABER WENN DOCH:</h2>
+                <div class="contact-links">
+                    <a href="mailto:info@the-radon-boys.com" class="c-link">info@the-radon-boys.com</a>
+                    <a href="tel:+491747272830" class="c-link">+49 1747272830</a>
+                </div>
+            </div>
+            <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="currentColor"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content">
+            <video id="modal-video" controls></video>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="f-brand">
+                <img src="Bilder/Radon_LOGO.jpg" alt="The Radon Boys Logo" class="footer-logo"><br>
+                THE RADON BOYS
+            </div>
+            <div class="f-links">
+                <a href="https://instagram.com/theradonboys" target="_blank">INSTAGRAM</a>
+                <a href="mailto:info@the-radon-boys.com">MAIL</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="copyright">© 2026</span>
+            <span class="motto">„Laut war nie genug.“</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
